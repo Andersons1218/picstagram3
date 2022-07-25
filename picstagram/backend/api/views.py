@@ -91,6 +91,7 @@ class UpdatePostView(APIView):
         posts = Post.objects.get(id=pk)
         posts.delete()
         return Response(status=204)
+        
 class DeletePostView(APIView):
     serializer_class = PostSerializer
     def get(self, request, pk):
