@@ -23,5 +23,4 @@ urlpatterns = [
     path('api/create/', CreatePostView.as_view(), name='create'),
     path('api/update/<int:pk>/', UpdatePostView.as_view(), name='update'),
     path('api/delete/<int:pk>/', DeletePostView.as_view(), name='delete'),
-    
 ]
