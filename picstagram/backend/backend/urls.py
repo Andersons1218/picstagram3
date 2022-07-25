@@ -19,5 +19,9 @@ from api.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/post', PostView.as_view(), name='post'),
+    path('api/post/', PostView.as_view(), name='post'),
+    path('api/create/', CreatePostView.as_view(), name='create'),
+    path('api/update/<int:pk>/', UpdatePostView.as_view(), name='update'),
+    path('api/delete/<int:pk>/', DeletePostView.as_view(), name='delete'),
+    
 ]
