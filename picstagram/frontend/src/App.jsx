@@ -1,15 +1,15 @@
-
 import './App.css';
-import {useEffect, useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import axios from 'axios';
-import Navbar from "./components/Navbar";
+import Footer from './components/Footer';
+import Navbar from './components/NavBar';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import PrivateRoute from "./utils/PrivateRoute";
-import { AuthProvider } from "./context/AuthContext";
+
+import { AuthProvider } from './components/context/AuthContext';
 import Home from "./views/homePage";
 import Login from "./views/loginPage";
 import Register from "./views/registerPage";
-import ProtectedPage from "./views/ProtectedPage";
+
 
 export default function App() {
   const [posts, setPosts] = useState([]);
@@ -31,20 +31,19 @@ export default function App() {
   }, [])
   return (
     <>
-     <Router>
+    <Router>
       <div className="flex flex-col min-h-screen overflow-hidden">
         <AuthProvider>
           <Navbar />
-          <Switch>
-            <PrivateRoute component={ProtectedPage} path="/protected" exact />
+            <Switch>
             <Route component={Login} path="/login" />
             <Route component={Register} path="/register" />
-            <Route component={Home} path="/" />
-          </Switch>
+            <Route component={Home} path="/" /> 
+            </Switch>
         </AuthProvider>
         <Footer />
       </div>
-    </Router>
+       </Router>
     <div>
       {posts.map((post) => (
         <div>
