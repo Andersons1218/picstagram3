@@ -1,14 +1,15 @@
-import logo from './logo.svg';
+
 import './App.css';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import axios from 'axios';
 
 export default function App() {
   const [posts, setPosts] = useState([]);
 
+
  function getPost(){
   let data 
-  axios.get('https://localhost:8000/')
+  axios.get('http://127.0.0.1:8000/api/post/')
   .then(res => {
     data = res.data;
     setPosts(data);
@@ -16,13 +17,16 @@ export default function App() {
   .catch(err => {
     console.log(err);
   }
-  )
+  )}
+  useEffect(() => {
+    getPost()
+  }, [])
   return (
     <div>
-      {posts.map(posts => {
+      {posts.map((post) => (
         <div>
-          <h1>{posts.description}</h1></div>})}
+          {post.comments}</div>))}
     </div>
   );
-}
+
 }
